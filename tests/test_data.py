@@ -220,7 +220,7 @@ def test_yahoo_upper_bounds_when_detail_missing():
     assert fin.interest_bearing_debt == 900  # majorée par le total des passifs
     assert fin.interest_bearing_investments == 700  # toute la trésorerie
     assert fin.interest_income == 50  # net 40 + charges 10
-    assert len(fin.notes) == 3
+    assert len(fin.notes) == 4  # dont « placements à long terme non publiés »
 
 
 def test_fetch_prices_and_company_with_fake_ticker():
@@ -284,7 +284,8 @@ def test_shipped_config_files_load():
     from halal_trading.data.pipeline import load_data_config
 
     root = CONFIG.parent
-    assert load_reviews(root / "manual_reviews.yaml") == {}
+    reviews = load_reviews(root / "manual_reviews.yaml")
+    assert all(r.reviewed_by and r.source for r in reviews.values())
     cfg = load_data_config(root / "data_sources.yaml")
     assert "BTC-EUR" in cfg.crypto_products and "MSFT" in cfg.stock_symbols
 
@@ -321,3 +322,10 @@ def test_local_exchange_date_is_kept():
     idx = pd.date_range("2024-01-02", periods=2, tz="Europe/Paris")
     df = normalize_prices(pd.DataFrame({"date": idx, "open": 1.0, "high": 1.0, "low": 1.0, "close": 1.0}), "t")
     assert [d.date() for d in df["date"]] == [date(2024, 1, 2), date(2024, 1, 3)]
+
+
+def test_yahoo_long_term_investments_are_counted():
+    fin = financials_from_statements(
+        *statements(**{"Cash Equivalents": 100.0, "Other Short Term Investments": 200.0, "Investments And Advances": 700.0})
+    )
+    assert fin.interest_bearing_investments == 1000
