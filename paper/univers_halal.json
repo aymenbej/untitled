@@ -1,0 +1,1948 @@
+[
+ {
+  "symbol": "A",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:36.617417+00:00",
+  "purification": "0.008923431203223949337938975245"
+ },
+ {
+  "symbol": "ABBN.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:37.600072+00:00",
+  "purification": "0.006110776640577965081276339554"
+ },
+ {
+  "symbol": "ABBV",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:37.678342+00:00",
+  "purification": "0.004349247874427730542838456508"
+ },
+ {
+  "symbol": "ADBE",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:40.246515+00:00",
+  "purification": "0.01110690395052379149312129244"
+ },
+ {
+  "symbol": "ADI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:41.051706+00:00",
+  "purification": "0.009552522585219371077652064615"
+ },
+ {
+  "symbol": "ADP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:41.039657+00:00",
+  "purification": "0.01690405241623153539827041016"
+ },
+ {
+  "symbol": "ADS.DE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:41.400043+00:00",
+  "purification": "0.002337672806416508806577727621"
+ },
+ {
+  "symbol": "ADSK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:42.058716+00:00",
+  "purification": "0.003746877601998334721065778518"
+ },
+ {
+  "symbol": "AEM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:42.539637+00:00",
+  "purification": "0.004882828984003914728190670172"
+ },
+ {
+  "symbol": "AI.PA",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:44.255196+00:00",
+  "purification": "0.002561228201720848397562007706"
+ },
+ {
+  "symbol": "ALC",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:45.584382+00:00",
+  "purification": "0.007114700509566387847322372849"
+ },
+ {
+  "symbol": "ALFA.ST",
+  "currency": "SEK",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:45.637243+00:00",
+  "purification": "0.002396842482956584140653031934"
+ },
+ {
+  "symbol": "ALNY",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:46.434479+00:00",
+  "purification": "0.03001397169634272202247911044"
+ },
+ {
+  "symbol": "AMD",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:47.963832+00:00",
+  "purification": "0.006206876641935390744536505095"
+ },
+ {
+  "symbol": "AMGN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:48.284995+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "AMZN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:50.353910+00:00",
+  "purification": "0.006110829041851019075941103938"
+ },
+ {
+  "symbol": "ANET",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:51.059862+00:00",
+  "purification": "0.04257303707651820513674672707"
+ },
+ {
+  "symbol": "ANTO.L",
+  "currency": "GBP",
+  "pence": true,
+  "screened_at": "2026-11-19T11:10:52.122589+00:00",
+  "purification": "0.01415263969931440901128731019"
+ },
+ {
+  "symbol": "APH",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:52.452226+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "APP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:52.799684+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "ARGX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:53.656949+00:00",
+  "purification": "0.03926609047541315936845278251"
+ },
+ {
+  "symbol": "ARM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:53.849900+00:00",
+  "purification": "0.02256097560975609756097560976"
+ },
+ {
+  "symbol": "ASM.AS",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:54.495006+00:00",
+  "purification": "0.01673389638220093281230303794"
+ },
+ {
+  "symbol": "ASML",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:54.922658+00:00",
+  "purification": "0.006826398263707132208661260649"
+ },
+ {
+  "symbol": "ATCO-A.ST",
+  "currency": "SEK",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:55.788078+00:00",
+  "purification": "0.003564151761582008161907534023"
+ },
+ {
+  "symbol": "ATI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:55.997106+00:00",
+  "purification": "0.002637659676505209922832105332"
+ },
+ {
+  "symbol": "AU",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:56.463412+00:00",
+  "purification": "0.01445466491458607095926412615"
+ },
+ {
+  "symbol": "AVGO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:57.202263+00:00",
+  "purification": "0.005431464930267503560974846213"
+ },
+ {
+  "symbol": "AZN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:58.281166+00:00",
+  "purification": "0.006128807095796659800132790820"
+ },
+ {
+  "symbol": "AZO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:58.558548+00:00",
+  "purification": "0.0006234464542835024415451343520"
+ },
+ {
+  "symbol": "B",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:10:58.957837+00:00",
+  "purification": "0.002712903986789337107808445388"
+ },
+ {
+  "symbol": "BBY",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:02.739766+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "BE",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:03.234126+00:00",
+  "purification": "0.01683305385292644148154589391"
+ },
+ {
+  "symbol": "BHP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:04.267124+00:00",
+  "purification": "0.009751531654186521443158611300"
+ },
+ {
+  "symbol": "BIIB",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:05.039239+00:00",
+  "purification": "0.01263826259276484743089398014"
+ },
+ {
+  "symbol": "BSP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:10.639413+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "BSX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:11.021117+00:00",
+  "purification": "0.001444654777323901564212414068"
+ },
+ {
+  "symbol": "CAH",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:13.209252+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "CARR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:13.989854+00:00",
+  "purification": "0.004322435278429208626477215248"
+ },
+ {
+  "symbol": "CCJ",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:16.389709+00:00",
+  "purification": "0.006654924147018337228200542630"
+ },
+ {
+  "symbol": "CDNS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:16.607885+00:00",
+  "purification": "0.01917852029892241651923374275"
+ },
+ {
+  "symbol": "CEG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:17.418302+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "CFR.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:17.724455+00:00",
+  "purification": "0.009857270294380017841213202498"
+ },
+ {
+  "symbol": "CIEN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:19.725390+00:00",
+  "purification": "0.01153578346776721367638206632"
+ },
+ {
+  "symbol": "CL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:20.237197+00:00",
+  "purification": "0.003679717397703856343832793641"
+ },
+ {
+  "symbol": "CLS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:20.847936+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "CMI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:22.316579+00:00",
+  "purification": "0.006266706266706266706266706267"
+ },
+ {
+  "symbol": "CNQ",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:23.425751+00:00",
+  "purification": "0.004641474403966762514999886793"
+ },
+ {
+  "symbol": "COHR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:24.203659+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "COP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:24.539282+00:00",
+  "purification": "0.005276194353963083604777415852"
+ },
+ {
+  "symbol": "CPNG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:26.023277+00:00",
+  "purification": "0.005762437018590374703191058088"
+ },
+ {
+  "symbol": "CPRT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:26.502311+00:00",
+  "purification": "0.03898732354251599103254912071"
+ },
+ {
+  "symbol": "CRM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:27.772431+00:00",
+  "purification": "0.01298013245033112582781456954"
+ },
+ {
+  "symbol": "CRWD",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:27.702604+00:00",
+  "purification": "0.04051720644513046017200730257"
+ },
+ {
+  "symbol": "CSCO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:28.740786+00:00",
+  "purification": "0.01367548361626529806553493881"
+ },
+ {
+  "symbol": "CSX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:28.798407+00:00",
+  "purification": "0.003193301163780868577916548396"
+ },
+ {
+  "symbol": "CTAS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:29.280496+00:00",
+  "purification": "0.0004533607060105403035182015846"
+ },
+ {
+  "symbol": "CVE",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:29.890187+00:00",
+  "purification": "0.002502322230858182783264772232"
+ },
+ {
+  "symbol": "CVNA",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:30.098961+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "CVX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:30.761135+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "DASH",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:31.964983+00:00",
+  "purification": "0.01538237223882773201137274914"
+ },
+ {
+  "symbol": "DELL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:33.373427+00:00",
+  "purification": "0.002457327062305131321672039317"
+ },
+ {
+  "symbol": "DIM.PA",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:35.741861+00:00",
+  "purification": "0.003909014321819713563605728728"
+ },
+ {
+  "symbol": "DIS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:35.886234+00:00",
+  "purification": "0.007318455405299773313530837177"
+ },
+ {
+  "symbol": "DLTR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:36.816884+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "DOV",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:37.081166+00:00",
+  "purification": "0.009024573278380875496798236308"
+ },
+ {
+  "symbol": "DRI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:37.966789+00:00",
+  "purification": "0.0001589596469581936128499950798"
+ },
+ {
+  "symbol": "DSFIR.AS",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:38.242996+00:00",
+  "purification": "0.006641576267434137702014611468"
+ },
+ {
+  "symbol": "DSY.PA",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:39.015990+00:00",
+  "purification": "0.02405503792677646455089244191"
+ },
+ {
+  "symbol": "DVN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:40.307999+00:00",
+  "purification": "0.003258087037468000930882010705"
+ },
+ {
+  "symbol": "DXCM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:40.253385+00:00",
+  "purification": "0.02417417417417417417417417417"
+ },
+ {
+  "symbol": "EBAY",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:40.488842+00:00",
+  "purification": "0.02387387387387387387387387387"
+ },
+ {
+  "symbol": "ECL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:41.682853+00:00",
+  "purification": "0.004048205357809118722483396761"
+ },
+ {
+  "symbol": "EL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:43.776273+00:00",
+  "purification": "0.005980463818193899926905442222"
+ },
+ {
+  "symbol": "ELE.MC",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:43.898224+00:00",
+  "purification": "0E+1"
+ },
+ {
+  "symbol": "EMR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:45.126715+00:00",
+  "purification": "0.005478874723422189442629859867"
+ },
+ {
+  "symbol": "EMSN.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:45.070031+00:00",
+  "purification": "0.001462822159396324274641270050"
+ },
+ {
+  "symbol": "ENR.DE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:46.290674+00:00",
+  "purification": "0.007164975250322084849580724634"
+ },
+ {
+  "symbol": "ENTG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:47.316395+00:00",
+  "purification": "0.002471375836826628292560845899"
+ },
+ {
+  "symbol": "EOG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:47.444190+00:00",
+  "purification": "0.009299442033477991320520768754"
+ },
+ {
+  "symbol": "EPI-A.ST",
+  "currency": "SEK",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:48.289766+00:00",
+  "purification": "0.006500209684183360753572695893"
+ },
+ {
+  "symbol": "EQIX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:48.437049+00:00",
+  "purification": "0.02093956818921557990669415211"
+ },
+ {
+  "symbol": "EQT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:48.735573+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "EW",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:50.972849+00:00",
+  "purification": "0.02781989584020040872832751005"
+ },
+ {
+  "symbol": "EXPE",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:52.297244+00:00",
+  "purification": "0.01730808389330075341071064956"
+ },
+ {
+  "symbol": "EXPN.L",
+  "currency": "GBP",
+  "pence": true,
+  "screened_at": "2026-11-19T11:11:52.795256+00:00",
+  "purification": "0.004026050917702782711663706335"
+ },
+ {
+  "symbol": "FANG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:53.494454+00:00",
+  "purification": "0.001674593073883046419720008038"
+ },
+ {
+  "symbol": "FAST",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:53.794808+00:00",
+  "purification": "0.0006706908115358819584171696848"
+ },
+ {
+  "symbol": "FCX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:54.249289+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "FER",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:55.051674+00:00",
+  "purification": "0.01526955437831100031162355874"
+ },
+ {
+  "symbol": "FIX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:56.174325+00:00",
+  "purification": "0.002373637896726535357744828652"
+ },
+ {
+  "symbol": "FLEX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:56.653395+00:00",
+  "purification": "0.001827040194884287454323995128"
+ },
+ {
+  "symbol": "FNV",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:57.143501+00:00",
+  "purification": "0.01547070441079657669519420671"
+ },
+ {
+  "symbol": "FORTUM.HE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:57.362793+00:00",
+  "purification": "0.03086790940068149929845660453"
+ },
+ {
+  "symbol": "FTI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:58.115970+00:00",
+  "purification": "0.004218432233252119283973984657"
+ },
+ {
+  "symbol": "FTNT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:58.211041+00:00",
+  "purification": "0.02386905112065415612683099006"
+ },
+ {
+  "symbol": "FWONK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:58.908062+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "GALD.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:11:59.269873+00:00",
+  "purification": "0.002480442663613814157603510780"
+ },
+ {
+  "symbol": "GEBN.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:00.417661+00:00",
+  "purification": "0.002244775364380789781529608903"
+ },
+ {
+  "symbol": "GEHC",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:00.492015+00:00",
+  "purification": "0.001987878787878787878787878788"
+ },
+ {
+  "symbol": "GEV",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:01.138564+00:00",
+  "purification": "0.01195229589156246716402227593"
+ },
+ {
+  "symbol": "GFI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:01.300927+00:00",
+  "purification": "0.006090523693622661775964713814"
+ },
+ {
+  "symbol": "GFS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:01.490740+00:00",
+  "purification": "0.02341334118686496834045059638"
+ },
+ {
+  "symbol": "GLW",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:02.596950+00:00",
+  "purification": "0.002431377567342760253375135965"
+ },
+ {
+  "symbol": "GMAB",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:03.655407+00:00",
+  "purification": "0.03709677419354838709677419355"
+ },
+ {
+  "symbol": "GOOGL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:03.823186+00:00",
+  "purification": "0.01076616786980309604901250137"
+ },
+ {
+  "symbol": "GRMN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:04.446167+00:00",
+  "purification": "0.01778671755605085018754350102"
+ },
+ {
+  "symbol": "GSK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:04.948251+00:00",
+  "purification": "0.001714268221752839256742278140"
+ },
+ {
+  "symbol": "GWW",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:05.028458+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "HD",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:06.800389+00:00",
+  "purification": "0.0007529617507575159548951622208"
+ },
+ {
+  "symbol": "HEI.DE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:07.328052+00:00",
+  "purification": "0.003695212532968005889973066421"
+ },
+ {
+  "symbol": "HEN3.DE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:08.267174+00:00",
+  "purification": "0.004976823615515979507196877287"
+ },
+ {
+  "symbol": "HEXA-B.ST",
+  "currency": "SEK",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:08.521322+00:00",
+  "purification": "0.002433359141687866386461674594"
+ },
+ {
+  "symbol": "HLN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:09.263063+00:00",
+  "purification": "0.005167724388032638259292837715"
+ },
+ {
+  "symbol": "HLT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:09.477424+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "HM-B.ST",
+  "currency": "SEK",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:09.565146+00:00",
+  "purification": "0.002015025078301246249206036314"
+ },
+ {
+  "symbol": "HON",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:11.521696+00:00",
+  "purification": "0.009855242775492762138774638107"
+ },
+ {
+  "symbol": "HOT.DE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:12.285990+00:00",
+  "purification": "0.004739271915938670479571541971"
+ },
+ {
+  "symbol": "HSY",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:13.276535+00:00",
+  "purification": "0.002959142621779837052160276743"
+ },
+ {
+  "symbol": "HUBB",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:14.056701+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "IDXX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:16.783211+00:00",
+  "purification": "0.0006993978672315137061069748788"
+ },
+ {
+  "symbol": "IHG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:17.752869+00:00",
+  "purification": "0.009443052611293120061668915013"
+ },
+ {
+  "symbol": "ILMN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:18.180235+00:00",
+  "purification": "0.009210223347916186967533962699"
+ },
+ {
+  "symbol": "IMO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:18.954525+00:00",
+  "purification": "0.0003097139570382496736942238347"
+ },
+ {
+  "symbol": "INCY",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:19.191279+00:00",
+  "purification": "0.02053978396659795434644002364"
+ },
+ {
+  "symbol": "INSM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:20.403625+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "INTC",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:20.298131+00:00",
+  "purification": "0.01905284468242105462320019677"
+ },
+ {
+  "symbol": "IR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:22.505098+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "ISRG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:22.845248+00:00",
+  "purification": "0.03635478454400031794290937634"
+ },
+ {
+  "symbol": "ITW",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:23.807209+00:00",
+  "purification": "0.002493143854400398903016704064"
+ },
+ {
+  "symbol": "JBHT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:24.821586+00:00",
+  "purification": "0.0003541100096207247612653486563"
+ },
+ {
+  "symbol": "JBL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:24.874311+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "JCI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:24.941175+00:00",
+  "purification": "0.0003116964076989012701628613730"
+ },
+ {
+  "symbol": "JNJ",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:26.013962+00:00",
+  "purification": "0.01121102417377087469344855775"
+ },
+ {
+  "symbol": "KEYS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:27.561015+00:00",
+  "purification": "0.01897674418604651162790697674"
+ },
+ {
+  "symbol": "KGC",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:28.052951+00:00",
+  "purification": "0.01035299456822339776772418488"
+ },
+ {
+  "symbol": "KLAC",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:28.678403+00:00",
+  "purification": "0.01303842651955053346682891151"
+ },
+ {
+  "symbol": "KMB",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:29.337929+00:00",
+  "purification": "0.001459232686812184592934881741"
+ },
+ {
+  "symbol": "KNEBV.HE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:29.626721+00:00",
+  "purification": "0.003201365916124212997545619464"
+ },
+ {
+  "symbol": "KO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:30.330223+00:00",
+  "purification": "0.01639515237479401764669072401"
+ },
+ {
+  "symbol": "LIN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:32.694420+00:00",
+  "purification": "0.006149591008062143235449891132"
+ },
+ {
+  "symbol": "LISP.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:32.760691+00:00",
+  "purification": "0.001318502991987558740998681497"
+ },
+ {
+  "symbol": "LITE",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:33.253356+00:00",
+  "purification": "0.01997345719973457199734571997"
+ },
+ {
+  "symbol": "LONN.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:34.259214+00:00",
+  "purification": "0.006583984075945490736487521053"
+ },
+ {
+  "symbol": "LR.PA",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:35.072448+00:00",
+  "purification": "0.007984726705060861126932894543"
+ },
+ {
+  "symbol": "LRCX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:35.356910+00:00",
+  "purification": "0.008444523643194137226468394319"
+ },
+ {
+  "symbol": "LUV",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:36.395710+00:00",
+  "purification": "0.007304992338666571642376082386"
+ },
+ {
+  "symbol": "LYV",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:37.395436+00:00",
+  "purification": "0.005969706610813698251597549756"
+ },
+ {
+  "symbol": "MAERSK-B.CO",
+  "currency": "DKK",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:37.541958+00:00",
+  "purification": "0.01744832184929984440986885975"
+ },
+ {
+  "symbol": "MAR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:37.781222+00:00",
+  "purification": "0.001603910486519514244252654090"
+ },
+ {
+  "symbol": "MCD",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:38.754590+00:00",
+  "purification": "0.003050027896596615212944020829"
+ },
+ {
+  "symbol": "MCHP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:39.437690+00:00",
+  "purification": "0.002418790180560565233073773101"
+ },
+ {
+  "symbol": "MCK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:39.809806+00:00",
+  "purification": "0.0004436953126936519346602880301"
+ },
+ {
+  "symbol": "MDB",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:39.952156+00:00",
+  "purification": "0.03595791374045832509740047577"
+ },
+ {
+  "symbol": "MDLN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:40.445569+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "MDLZ",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:40.922582+00:00",
+  "purification": "0.008225860860990736175623426837"
+ },
+ {
+  "symbol": "MDT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:40.788679+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "MELI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:41.104894+00:00",
+  "purification": "0.004776243380749662548022012252"
+ },
+ {
+  "symbol": "META",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:41.933121+00:00",
+  "purification": "0.01056397599593961167560681906"
+ },
+ {
+  "symbol": "MMM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:43.024376+00:00",
+  "purification": "0.009299342632675966009299342633"
+ },
+ {
+  "symbol": "MPWR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:44.401694+00:00",
+  "purification": "0.01044666845131929908305407820"
+ },
+ {
+  "symbol": "MRK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:45.320263+00:00",
+  "purification": "0.005276030210272107797142022119"
+ },
+ {
+  "symbol": "MRK.DE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:45.263887+00:00",
+  "purification": "0.004407165197611600796133067956"
+ },
+ {
+  "symbol": "MSCI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:46.660550+00:00",
+  "purification": "0.005108377554148897784274734492"
+ },
+ {
+  "symbol": "MSFT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:46.471514+00:00",
+  "purification": "0.009947595068692950497078402478"
+ },
+ {
+  "symbol": "MSTR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:47.467677+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "MTD",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:48.481189+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "MU",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:48.717318+00:00",
+  "purification": "0.008138871369793074451151755413"
+ },
+ {
+  "symbol": "NEM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:38.599683+00:00",
+  "purification": "0.009440204684811857602893819754"
+ },
+ {
+  "symbol": "NESN.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:39.176920+00:00",
+  "purification": "0.003337598041942482060410524559"
+ },
+ {
+  "symbol": "NESTE.HE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:39.121473+00:00",
+  "purification": "0.001367269667648296171644930585"
+ },
+ {
+  "symbol": "NFLX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:39.879456+00:00",
+  "purification": "0.003816897120414838878910217543"
+ },
+ {
+  "symbol": "NOK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:42.246298+00:00",
+  "purification": "0.01779878324702096636331640605"
+ },
+ {
+  "symbol": "NOVN.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:42.551352+00:00",
+  "purification": "0.006581501217489501358647704415"
+ },
+ {
+  "symbol": "NOW",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:43.243512+00:00",
+  "purification": "0.03396595872872420545262840789"
+ },
+ {
+  "symbol": "NTAP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:43.642561+00:00",
+  "purification": "0.01631768953068592057761732852"
+ },
+ {
+  "symbol": "NTRA",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:12:58.946005+00:00",
+  "purification": "0.01989971870415716836078717738"
+ },
+ {
+  "symbol": "NVDA",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:46.355652+00:00",
+  "purification": "0.01065120543859811612592503404"
+ },
+ {
+  "symbol": "NXT.L",
+  "currency": "GBP",
+  "pence": true,
+  "screened_at": "2026-11-19T11:13:02.621352+00:00",
+  "purification": "0.001593902598061234839812788895"
+ },
+ {
+  "symbol": "ODFL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:47.257360+00:00",
+  "purification": "0.0007541314852351243698362688667"
+ },
+ {
+  "symbol": "OKTA",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:47.917838+00:00",
+  "purification": "0.03768413840356286399451867078"
+ },
+ {
+  "symbol": "ONC",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:08.156485+00:00",
+  "purification": "0.01319568866596930994062735529"
+ },
+ {
+  "symbol": "OR.PA",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:09.413042+00:00",
+  "purification": "0.003806864614546445110324162354"
+ },
+ {
+  "symbol": "ORLY",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:11.758654+00:00",
+  "purification": "0.0004118211278016546177728569443"
+ },
+ {
+  "symbol": "OXY",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:14.484160+00:00",
+  "purification": "0.01014217570508961237438058630"
+ },
+ {
+  "symbol": "P",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:14.731265+00:00",
+  "purification": "0.01705969925546904412774448700"
+ },
+ {
+  "symbol": "PANW",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:18.194901+00:00",
+  "purification": "0.03257839721254355400696864111"
+ },
+ {
+  "symbol": "PEP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:25.152363+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "PG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:16:47.857080+00:00",
+  "purification": "0.004940711462450592885375494071"
+ },
+ {
+  "symbol": "PH",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:28.261501+00:00",
+  "purification": "0.0006511930787478487371505651426"
+ },
+ {
+  "symbol": "PKG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:32.146569+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "PPG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:33.863100+00:00",
+  "purification": "0.009637795275590551181102362205"
+ },
+ {
+  "symbol": "PRY.MI",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:37.770401+00:00",
+  "purification": "0.001017811704834605597964376590"
+ },
+ {
+  "symbol": "PSA",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:38.389307+00:00",
+  "purification": "0.007590410921137212167293759495"
+ },
+ {
+  "symbol": "PSX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:40.109925+00:00",
+  "purification": "0.001065147760923430229044539796"
+ },
+ {
+  "symbol": "PWR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:41.458026+00:00",
+  "purification": "0.0005513401353954011519153451668"
+ },
+ {
+  "symbol": "Q",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:43.094781+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "QCOM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:44.423874+00:00",
+  "purification": "0.009833024118738404452690166976"
+ },
+ {
+  "symbol": "RACE",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:45.533114+00:00",
+  "purification": "0.002857075684517045613571557319"
+ },
+ {
+  "symbol": "RBLX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:47.441976+00:00",
+  "purification": "0.04122439373395758473840677666"
+ },
+ {
+  "symbol": "RBRK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:47.901736+00:00",
+  "purification": "0.03962722735530025657370396850"
+ },
+ {
+  "symbol": "RCL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:48.640809+00:00",
+  "purification": "0.001338240214118434258949481432"
+ },
+ {
+  "symbol": "REGN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:49.174347+00:00",
+  "purification": "0.04997594628701308661428302505"
+ },
+ {
+  "symbol": "REL.L",
+  "currency": "GBP",
+  "pence": true,
+  "screened_at": "2026-11-19T11:13:50.395069+00:00",
+  "purification": "0.001251303441084462982273201251"
+ },
+ {
+  "symbol": "RGLD",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:52.265955+00:00",
+  "purification": "0.01398486711416429962609331073"
+ },
+ {
+  "symbol": "RIO.L",
+  "currency": "GBP",
+  "pence": true,
+  "screened_at": "2026-11-19T11:13:54.477644+00:00",
+  "purification": "0.001249175890905305527603317256"
+ },
+ {
+  "symbol": "RKT.L",
+  "currency": "GBP",
+  "pence": true,
+  "screened_at": "2026-11-19T11:13:57.520395+00:00",
+  "purification": "0.002886307638155579021471312918"
+ },
+ {
+  "symbol": "RL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:57.856518+00:00",
+  "purification": "0.006617782981083246041037648654"
+ },
+ {
+  "symbol": "RMS.PA",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:13:59.662403+00:00",
+  "purification": "0.01874882819823761014936566465"
+ },
+ {
+  "symbol": "ROK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:00.951906+00:00",
+  "purification": "0.001779953276226499054399822005"
+ },
+ {
+  "symbol": "ROP.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:02.654559+00:00",
+  "purification": "0.003204116421491255761096028790"
+ },
+ {
+  "symbol": "ROST",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:03.672598+00:00",
+  "purification": "0.007592868377431956726865480536"
+ },
+ {
+  "symbol": "RS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:05.634587+00:00",
+  "purification": "0.0003148107987099753048417900842"
+ },
+ {
+  "symbol": "RSG",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:06.637372+00:00",
+  "purification": "0.0004821891386896510156108733651"
+ },
+ {
+  "symbol": "SAN.PA",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:13.882857+00:00",
+  "purification": "0.007085366897850843394126209436"
+ },
+ {
+  "symbol": "SAND.ST",
+  "currency": "SEK",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:15.155712+00:00",
+  "purification": "0.004781239642028505137553861452"
+ },
+ {
+  "symbol": "SAP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:15.629017+00:00",
+  "purification": "0.01163043478260869565217391304"
+ },
+ {
+  "symbol": "SBUX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:16.979064+00:00",
+  "purification": "0.003824787790222259737382156969"
+ },
+ {
+  "symbol": "SCHP.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:17.537548+00:00",
+  "purification": "0.004110715264456015346670320636"
+ },
+ {
+  "symbol": "SCMN.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:19.030969+00:00",
+  "purification": "0.0007974481658692185007974481659"
+ },
+ {
+  "symbol": "SDZ.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:18.956566+00:00",
+  "purification": "0.004212601953930267993188133011"
+ },
+ {
+  "symbol": "SGSN.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:21.650941+00:00",
+  "purification": "0.004895608351331893448524118071"
+ },
+ {
+  "symbol": "SHEL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:22.541685+00:00",
+  "purification": "0.007763614427133682546105827957"
+ },
+ {
+  "symbol": "SHL.DE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:23.273027+00:00",
+  "purification": "0.004824375793482860770207363521"
+ },
+ {
+  "symbol": "SHOP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:26.567509+00:00",
+  "purification": "0.02864312911041883004499826930"
+ },
+ {
+  "symbol": "SHW",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:24.247294+00:00",
+  "purification": "0.0004750936401080838031245890652"
+ },
+ {
+  "symbol": "SIKA.SW",
+  "currency": "CHF",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:25.016460+00:00",
+  "purification": "0.001544463589047699820556542544"
+ },
+ {
+  "symbol": "SLB",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:27.916762+00:00",
+  "purification": "0.003808670325977372017475075613"
+ },
+ {
+  "symbol": "SN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:30.507395+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "SNDK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:30.799813+00:00",
+  "purification": "0.003457131568549980244962465429"
+ },
+ {
+  "symbol": "SNOW",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:30.457675+00:00",
+  "purification": "0.04068279181698508052825544957"
+ },
+ {
+  "symbol": "SNPS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:32.391361+00:00",
+  "purification": "0.03936447308247679602074118345"
+ },
+ {
+  "symbol": "SPOT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:34.292631+00:00",
+  "purification": "0.01425578959618293960200162923"
+ },
+ {
+  "symbol": "SRT3.DE",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:36.494334+00:00",
+  "purification": "0.003928662276363019699838896583"
+ },
+ {
+  "symbol": "STE",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:37.903902+00:00",
+  "purification": "0.001650971209083710978958540407"
+ },
+ {
+  "symbol": "STLD",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:39.418467+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "STM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:39.879225+00:00",
+  "purification": "0.01889830508474576271186440678"
+ },
+ {
+  "symbol": "STX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:39.426845+00:00",
+  "purification": "0.002460024600246002460024600246"
+ },
+ {
+  "symbol": "SU",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:40.945561+00:00",
+  "purification": "0.00005727704908643106707142448021"
+ },
+ {
+  "symbol": "SU.PA",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:42.271852+00:00",
+  "purification": "0.003785614664275752141860928472"
+ },
+ {
+  "symbol": "SYK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:43.887746+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "TEAM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:48.818539+00:00",
+  "purification": "0.01060662403527041033378228774"
+ },
+ {
+  "symbol": "TER",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:50.212300+00:00",
+  "purification": "0.004920339157322954310061617091"
+ },
+ {
+  "symbol": "TGT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:51.734078+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "TJX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:52.597876+00:00",
+  "purification": "0.003229974160206718346253229974"
+ },
+ {
+  "symbol": "TKO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:53.826131+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "TMO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:55.001797+00:00",
+  "purification": "0.02228606055165293893215431919"
+ },
+ {
+  "symbol": "TPR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:55.714805+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "TRI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:14:57.662240+00:00",
+  "purification": "0.005350454788657035848047084002"
+ },
+ {
+  "symbol": "TS",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:00.071507+00:00",
+  "purification": "0.01906068003282153802007602438"
+ },
+ {
+  "symbol": "TT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:02.374337+00:00",
+  "purification": "0.0004221012198725254315984973197"
+ },
+ {
+  "symbol": "TXN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:05.498672+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "UI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:08.408017+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "UNP",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:14.139370+00:00",
+  "purification": "0.002284781721746226030191758466"
+ },
+ {
+  "symbol": "URI",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:14.356949+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "VIK",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:20.533564+00:00",
+  "purification": "0.01305499614776404966361958828"
+ },
+ {
+  "symbol": "VLTO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:22.850661+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "VMC",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:22.805033+00:00",
+  "purification": "0.001687423656672249436476054955"
+ },
+ {
+  "symbol": "VNOM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:23.056347+00:00",
+  "purification": "0.007173601147776183644189383070"
+ },
+ {
+  "symbol": "VRSN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:25.406139+00:00",
+  "purification": "0.01599661958227695279488108173"
+ },
+ {
+  "symbol": "VRTX",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:27.130898+00:00",
+  "purification": "0.04090390207727496187912976094"
+ },
+ {
+  "symbol": "VTR",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:27.412997+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "VWS.CO",
+  "currency": "DKK",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:29.263403+00:00",
+  "purification": "0.01036021676761236850494102646"
+ },
+ {
+  "symbol": "WAB",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:30.441986+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "WAT",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:31.195577+00:00",
+  "purification": "0.005932165371470382139244289458"
+ },
+ {
+  "symbol": "WCN",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:32.674186+00:00",
+  "purification": "0.001282255095773015813493624903"
+ },
+ {
+  "symbol": "WDAY",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:32.877618+00:00",
+  "purification": "0.03329145728643216080402010050"
+ },
+ {
+  "symbol": "WDC",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:33.223029+00:00",
+  "purification": "0.003947673968573418995278272312"
+ },
+ {
+  "symbol": "WELL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:35.135740+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "WKL.AS",
+  "currency": "EUR",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:35.523503+00:00",
+  "purification": "0.004734693877551020408163265306"
+ },
+ {
+  "symbol": "WM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:35.610691+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "WPM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:37.789679+00:00",
+  "purification": "0.01586840058757452691609781388"
+ },
+ {
+  "symbol": "WSM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:40.415200+00:00",
+  "purification": "0.004718697097510688096145727016"
+ },
+ {
+  "symbol": "WST",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:39.898065+00:00",
+  "purification": "0.005692723073419862724049315247"
+ },
+ {
+  "symbol": "XOM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:41.521351+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "XPO",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:42.697871+00:00",
+  "purification": "0"
+ },
+ {
+  "symbol": "XYL",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:43.162288+00:00",
+  "purification": "0.002988378527946873270614277809"
+ },
+ {
+  "symbol": "YUM",
+  "currency": "USD",
+  "pence": false,
+  "screened_at": "2026-11-19T11:15:43.110903+00:00",
+  "purification": "0"
+ }
+]
