@@ -72,26 +72,47 @@ def _now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+# Négations : « non-alcoholic », « sans alcool », « alcohol-free »... ne sont pas des activités interdites.
+_NEGATION_BEFORE = r"(?<!non-)(?<!non )(?<!sans )(?<!no )"
+_NEGATION_AFTER = r"(?![- ]free)"
+
+
 def _keyword_patterns(policy: CompliancePolicy) -> list[tuple[str, str, re.Pattern[str]]]:
     patterns = []
     for category, keywords in policy.prohibited_activities.items():
         for kw in keywords:
             # mot entier, pluriel simple toléré ; insensible à la casse
-            pattern = re.compile(r"(?<!\w)" + re.escape(kw.lower()) + r"(?:s|es)?(?!\w)", re.IGNORECASE)
+            pattern = re.compile(
+                _NEGATION_BEFORE + r"(?<!\w)" + re.escape(kw.lower()) + r"(?:s|es)?(?!\w)" + _NEGATION_AFTER,
+                re.IGNORECASE,
+            )
             patterns.append((category, kw, pattern))
     return patterns
 
 
+def _snippet(text: str, match: re.Match[str], width: int = 40) -> str:
+    if len(text) <= 2 * width + 20:
+        return text
+    start, end = max(0, match.start() - width), min(len(text), match.end() + width)
+    return ("…" if start else "") + text[start:end] + ("…" if end < len(text) else "")
+
+
 def find_prohibited_activities(texts: list[str], policy: CompliancePolicy) -> list[str]:
-    """Renvoie la liste des correspondances « catégorie (mot-clé) dans 'texte' »."""
+    """Renvoie la liste des correspondances « catégorie (mot-clé) dans 'extrait' »,
+    une seule par catégorie et par texte."""
     hits = []
     patterns = _keyword_patterns(policy)
     for text in texts:
         if not text:
             continue
+        seen: set[str] = set()
         for category, kw, pattern in patterns:
-            if pattern.search(text):
-                hits.append(f"{category} (« {kw} » dans « {text} »)")
+            if category in seen:
+                continue
+            match = pattern.search(text)
+            if match:
+                seen.add(category)
+                hits.append(f"{category} (« {kw} » dans « {_snippet(text, match)} »)")
     return hits
 
 
@@ -159,17 +180,22 @@ def _screen_financials(fin: CompanyFinancials, policy: CompliancePolicy, today: 
     missing = [name for name, value in required.items() if value is None]
     if missing:
         reasons.append("données manquantes : " + ", ".join(missing))
-        return reasons
 
+    # Les ratios calculables sont tout de même vérifiés, pour que le rapport
+    # montre toutes les causes d'exclusion, pas seulement l'absence de données.
+    if fin.market_cap is None or fin.total_revenue is None:
+        return reasons
     if fin.market_cap <= 0 or fin.total_revenue <= 0:
         reasons.append("capitalisation ou chiffre d'affaires nul ou négatif : ratios incalculables")
         return reasons
 
-    debt = fin.interest_bearing_debt
+    debt_parts = [fin.interest_bearing_debt]
     if policy.count_finance_leases_as_debt:
-        debt += fin.finance_lease_liabilities
+        debt_parts.append(fin.finance_lease_liabilities)
     if policy.count_operating_leases_as_debt:
-        debt += fin.operating_lease_liabilities
+        debt_parts.append(fin.operating_lease_liabilities)
+    known_debt = [d for d in debt_parts if d is not None]
+    debt = sum(known_debt, Decimal("0")) if known_debt else None
 
     checks = [
         ("dette à intérêt / capitalisation", debt, fin.market_cap, policy.max_interest_bearing_debt_ratio),
@@ -189,6 +215,8 @@ def _screen_financials(fin: CompanyFinancials, policy: CompliancePolicy, today: 
         ),
     ]
     for label, numerator, denominator, threshold in checks:
+        if numerator is None:
+            continue
         ratio = _ratio(numerator, denominator)
         if ratio > threshold:
             reasons.append(f"{label} = {ratio:.4%} > seuil {threshold:.4%} (montant : {numerator})")

@@ -299,3 +299,9 @@ def test_without_review_missing_data_excludes(tmp_path, policy):
     company = clean_company(financials=clean_financials(non_permissible_income=None))
     rows = screen_stocks(["HLL"], policy, ParquetStore(tmp_path), {}, fetch=lambda s: (company, {}), today=TODAY)
     assert not rows[0].result.compliant
+
+
+def test_local_exchange_date_is_kept():
+    idx = pd.date_range("2024-01-02", periods=2, tz="Europe/Paris")
+    df = normalize_prices(pd.DataFrame({"date": idx, "open": 1.0, "high": 1.0, "low": 1.0, "close": 1.0}), "t")
+    assert [d.date() for d in df["date"]] == [date(2024, 1, 2), date(2024, 1, 3)]

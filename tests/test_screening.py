@@ -125,3 +125,24 @@ def test_crypto_not_whitelisted_excluded(policy):
 )
 def test_crypto_fail_closed(policy, asset):
     assert not screen_crypto(asset, policy).compliant
+
+
+@pytest.mark.parametrize("text", ["Beverages - Non-Alcoholic", "boissons sans alcool", "alcohol-free drinks"])
+def test_negated_keywords_are_not_prohibited(policy, text):
+    assert screen_company(clean_company(industry=text), policy, today=TODAY).compliant
+
+
+def test_business_summary_catches_activity_hidden_by_sector(policy):
+    summary = "The company operates through Wines and Spirits, Fashion and Leather Goods, Perfumes segments."
+    company = clean_company(industry="Luxury Goods", business_activities=(summary,))
+    result = screen_company(company, policy, today=TODAY)
+    assert any("alcool" in r for r in result.reasons)
+
+
+def test_known_ratios_still_reported_when_other_data_missing(policy):
+    company = clean_company(
+        financials=clean_financials(non_permissible_income=None, interest_bearing_debt=Decimal("1000"))
+    )
+    reasons = screen_company(company, policy, today=TODAY).reasons
+    assert any("manquantes" in r for r in reasons)
+    assert any("dette à intérêt" in r for r in reasons)
