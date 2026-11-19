@@ -30,7 +30,7 @@ def test_any_interest_amount_excludes_company(policy, field):
     company = clean_company(financials=clean_financials(**{field: Decimal("1")}))
     result = screen_company(company, policy, today=TODAY)
     assert not result.compliant
-    assert len(result.reasons) == 1
+    assert all("manquantes" not in r for r in result.reasons)
 
 
 def test_operating_leases_not_counted_by_default(policy):
@@ -146,3 +146,68 @@ def test_known_ratios_still_reported_when_other_data_missing(policy):
     reasons = screen_company(company, policy, today=TODAY).reasons
     assert any("manquantes" in r for r in reasons)
     assert any("dette à intérêt" in r for r in reasons)
+
+
+# ------------------------------------------------------------------ profil AAOIFI
+def test_aaoifi_accepts_moderate_debt_and_interest(aaoifi_policy):
+    company = clean_company(
+        financials=clean_financials(
+            interest_bearing_debt=Decimal("10000000"),  # 20 % de la capitalisation
+            interest_income=Decimal("30000"),  # 3 % du CA
+            interest_expense=Decimal("50000"),
+            interest_bearing_investments=Decimal("5000000"),  # 10 %
+        )
+    )
+    result = screen_company(company, aaoifi_policy, today=TODAY)
+    assert result.compliant, result.reasons
+    assert result.impure_income_ratio == Decimal("0.03")  # 3 % des dividendes à purifier
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("interest_bearing_debt", "16000000"),  # 32 % > 30 %
+        ("interest_bearing_investments", "16000000"),
+        ("interest_income", "60000"),  # 6 % > 5 %
+    ],
+)
+def test_aaoifi_rejects_above_caps(aaoifi_policy, field, value):
+    company = clean_company(financials=clean_financials(**{field: Decimal(value)}))
+    assert not screen_company(company, aaoifi_policy, today=TODAY).compliant
+
+
+def test_aaoifi_total_impure_income_includes_interest(aaoifi_policy):
+    company = clean_company(
+        financials=clean_financials(interest_income=Decimal("30000"), non_permissible_income=Decimal("30000"))
+    )
+    result = screen_company(company, aaoifi_policy, today=TODAY)
+    assert any("totaux" in r for r in result.reasons)  # 3 % + 3 % = 6 % > 5 %
+
+
+def test_aaoifi_missing_other_income_relies_on_activity_screen_with_warning(aaoifi_policy):
+    company = clean_company(financials=clean_financials(non_permissible_income=None))
+    result = screen_company(company, aaoifi_policy, today=TODAY)
+    assert result.compliant
+    assert result.warnings
+
+
+@pytest.mark.parametrize(
+    "industry",
+    ["Banks - Diversified", "Insurance - Property & Casualty", "Beverages - Wineries & Distilleries"],
+)
+def test_aaoifi_keeps_activity_exclusions(aaoifi_policy, industry):
+    assert not screen_company(clean_company(industry=industry), aaoifi_policy, today=TODAY).compliant
+
+
+@pytest.mark.parametrize(
+    "summary",
+    [
+        "network assurance and observability suite",
+        "provides a dual-layered defense across the security fabric",
+        "title processing and express; loan payoff",
+        "serves companies in the aerospace and defense; architecture industries",
+    ],
+)
+def test_ambiguous_wording_no_longer_excludes(aaoifi_policy, summary):
+    company = clean_company(business_activities=(summary,))
+    assert screen_company(company, aaoifi_policy, today=TODAY).compliant

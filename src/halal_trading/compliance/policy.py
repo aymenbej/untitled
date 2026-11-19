@@ -13,6 +13,19 @@ from halal_trading.domain import InstrumentType
 from .errors import ComplianceError
 
 ZERO_TOLERANCE = "zero_tolerance"
+AAOIFI = "aaoifi"
+
+# Plafonds de la norme AAOIFI (Shariah Standard n° 21) : un profil « aaoifi » ne
+# peut pas être plus permissif.
+AAOIFI_CAPS = {
+    "max_interest_bearing_debt_ratio": Decimal("0.30"),
+    "max_interest_bearing_investments_ratio": Decimal("0.30"),
+    "max_non_permissible_income_ratio": Decimal("0.05"),
+}
+
+# Que faire quand la source ne fournit pas les « autres revenus non conformes » ?
+EXCLUDE = "exclude"  # exclusion (obligatoire en tolérance zéro)
+ACTIVITY_SCREEN = "activity_screen"  # on s'appuie sur le filtre d'activité, avec avertissement
 
 # Ces types ne peuvent jamais être autorisés, quelle que soit la configuration.
 NEVER_ALLOWED_TYPES = frozenset(
@@ -46,11 +59,14 @@ class CompliancePolicy:
         {InstrumentType.COMMON_STOCK, InstrumentType.CRYPTO_SPOT}
     )
     allowed_quote_currencies: frozenset[str] = frozenset({"EUR", "USD"})
-    max_interest_bearing_debt_ratio: Decimal = Decimal("0")
-    max_interest_bearing_investments_ratio: Decimal = Decimal("0")
-    max_interest_income_ratio: Decimal = Decimal("0")
-    max_interest_expense_ratio: Decimal = Decimal("0")
-    max_non_permissible_income_ratio: Decimal = Decimal("0")
+    # Seuils : None = critère non vérifié.
+    max_interest_bearing_debt_ratio: Decimal | None = Decimal("0")
+    max_interest_bearing_investments_ratio: Decimal | None = Decimal("0")
+    max_interest_income_ratio: Decimal | None = Decimal("0")
+    max_interest_expense_ratio: Decimal | None = Decimal("0")
+    # Revenus non conformes TOTAUX (intérêts perçus + autres revenus illicites) / CA
+    max_non_permissible_income_ratio: Decimal | None = Decimal("0")
+    missing_non_permissible_income: str = EXCLUDE
     count_finance_leases_as_debt: bool = True
     count_operating_leases_as_debt: bool = False
     max_financials_age_days: int = 400
@@ -66,7 +82,7 @@ class CompliancePolicy:
         self.validate()
 
     @property
-    def thresholds(self) -> dict[str, Decimal]:
+    def thresholds(self) -> dict[str, Decimal | None]:
         return {
             "max_interest_bearing_debt_ratio": self.max_interest_bearing_debt_ratio,
             "max_interest_bearing_investments_ratio": self.max_interest_bearing_investments_ratio,
@@ -92,8 +108,11 @@ class CompliancePolicy:
             raise ComplianceError(f"Stablecoins interdits comme devise de cotation : {', '.join(sorted(stablecoins))}")
 
         for name, value in self.thresholds.items():
-            if value < 0:
-                raise ComplianceError(f"Seuil négatif invalide : {name}={value}")
+            if value is not None and not (0 <= value <= 1):
+                raise ComplianceError(f"Seuil hors de [0, 1] : {name}={value}")
+
+        if self.missing_non_permissible_income not in (EXCLUDE, ACTIVITY_SCREEN):
+            raise ComplianceError(f"missing_non_permissible_income invalide : {self.missing_non_permissible_income}")
 
         for approval in self.crypto_whitelist:
             if not approval.approved_by.strip():
@@ -108,8 +127,19 @@ class CompliancePolicy:
                     "Profil tolérance zéro : tous les seuils doivent valoir 0, trouvé "
                     + ", ".join(f"{k}={v}" for k, v in non_zero.items())
                 )
+            if self.missing_non_permissible_income != EXCLUDE:
+                raise ComplianceError("Profil tolérance zéro : une donnée manquante doit entraîner l'exclusion.")
             if not self.count_finance_leases_as_debt:
                 raise ComplianceError("Profil tolérance zéro : le crédit-bail financier doit compter comme dette.")
+        elif self.profile == AAOIFI:
+            for name, cap in AAOIFI_CAPS.items():
+                value = self.thresholds[name]
+                if value is None or value > cap:
+                    raise ComplianceError(f"Profil AAOIFI : {name} doit être défini et ≤ {cap}, trouvé {value}")
+            if not self.count_finance_leases_as_debt:
+                raise ComplianceError("Profil AAOIFI : le crédit-bail financier doit compter comme dette.")
+        else:
+            raise ComplianceError(f"Profil inconnu : {self.profile}")
 
 
 def load_policy(path: str | Path) -> CompliancePolicy:
@@ -131,17 +161,20 @@ def load_policy(path: str | Path) -> CompliancePolicy:
         for entry in raw.get("crypto_whitelist", []) or []
     )
 
+    def threshold(name: str) -> Decimal | None:
+        value = thresholds.get(name, 0)
+        return None if value is None else Decimal(str(value))
+
     return CompliancePolicy(
         profile=raw.get("profile", ZERO_TOLERANCE),
         allowed_instrument_types=types,
         allowed_quote_currencies=frozenset(c.upper() for c in raw.get("allowed_quote_currencies", [])),
-        max_interest_bearing_debt_ratio=Decimal(str(thresholds.get("max_interest_bearing_debt_ratio", 0))),
-        max_interest_bearing_investments_ratio=Decimal(
-            str(thresholds.get("max_interest_bearing_investments_ratio", 0))
-        ),
-        max_interest_income_ratio=Decimal(str(thresholds.get("max_interest_income_ratio", 0))),
-        max_interest_expense_ratio=Decimal(str(thresholds.get("max_interest_expense_ratio", 0))),
-        max_non_permissible_income_ratio=Decimal(str(thresholds.get("max_non_permissible_income_ratio", 0))),
+        max_interest_bearing_debt_ratio=threshold("max_interest_bearing_debt_ratio"),
+        max_interest_bearing_investments_ratio=threshold("max_interest_bearing_investments_ratio"),
+        max_interest_income_ratio=threshold("max_interest_income_ratio"),
+        max_interest_expense_ratio=threshold("max_interest_expense_ratio"),
+        max_non_permissible_income_ratio=threshold("max_non_permissible_income_ratio"),
+        missing_non_permissible_income=str(raw.get("missing_non_permissible_income", EXCLUDE)),
         count_finance_leases_as_debt=bool(raw.get("count_finance_leases_as_debt", True)),
         count_operating_leases_as_debt=bool(raw.get("count_operating_leases_as_debt", False)),
         max_financials_age_days=int(raw.get("max_financials_age_days", 400)),

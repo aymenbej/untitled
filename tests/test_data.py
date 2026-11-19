@@ -191,10 +191,11 @@ def test_yahoo_mapping_debt_free_company():
     assert fin.period_end == date(2026, 6, 30)
 
 
-def test_yahoo_mapping_treats_all_leases_as_financing():
+def test_yahoo_mapping_counts_leases_inside_total_debt():
     fin = financials_from_statements(*statements(**{"Total Debt": 500.0, "Capital Lease Obligations": 500.0}))
-    assert fin.interest_bearing_debt == 0
-    assert fin.finance_lease_liabilities == 500
+    assert fin.interest_bearing_debt == 500  # locations comprises
+    assert fin.finance_lease_liabilities == 0  # déjà incluses, pas comptées deux fois
+    assert fin.notes
 
 
 def test_yahoo_missing_rows_are_unknown_not_zero():
@@ -205,6 +206,21 @@ def test_yahoo_missing_rows_are_unknown_not_zero():
     assert fin.interest_bearing_debt is None
     assert fin.interest_bearing_investments is None
     assert fin.interest_income is None
+
+
+def test_yahoo_upper_bounds_when_detail_missing():
+    info, income, balance = statements(
+        **{"Total Liabilities Net Minority Interest": 900.0, "Cash Cash Equivalents And Short Term Investments": 700.0}
+    )
+    balance = balance.drop(index=["Total Debt", "Cash Equivalents"])
+    income = income.drop(index=["Interest Income"])
+    income.loc["Net Interest Income"] = 40.0
+    income.loc["Interest Expense"] = 10.0
+    fin = financials_from_statements(info, income, balance)
+    assert fin.interest_bearing_debt == 900  # majorée par le total des passifs
+    assert fin.interest_bearing_investments == 700  # toute la trésorerie
+    assert fin.interest_income == 50  # net 40 + charges 10
+    assert len(fin.notes) == 3
 
 
 def test_fetch_prices_and_company_with_fake_ticker():

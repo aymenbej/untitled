@@ -4,9 +4,17 @@ Application interne qui prévoit, pour chaque actif autorisé, la probabilité
 d'atteindre un objectif de gain, achète les meilleures opportunités et revend à
 l'objectif, au stop ou à l'échéance. Actions et crypto.
 
-**Règle absolue : tolérance zéro sur l'intérêt (riba).** Ni dans les actifs
-achetés, ni dans le compte, ni dans les opérations. Cette règle est imposée par
-le code (module `compliance`), pas par un prompt ni par le modèle.
+**Deux niveaux de conformité halal**, imposés par le code (module `compliance`),
+pas par un prompt ni par le modèle :
+
+1. **Nos opérations — tolérance zéro sur l'intérêt** : compte « cash », pas de
+   marge, pas de levier, pas de vente à découvert, pas de solde négatif, aucun
+   intérêt reçu ou payé, pas de staking.
+2. **Les sociétés — norme AAOIFI** : dette à intérêt ≤ 30 % de la capitalisation,
+   placements à intérêt ≤ 30 %, revenus non conformes (intérêts compris) ≤ 5 % du
+   CA, avec purification des dividendes. Exclusions d'activité totales : banque,
+   assurance, crédit, alcool, porc, jeux d'argent, tabac, adulte, armement, drogues.
+   Un profil `zero_tolerance` reste disponible dans `config/compliance.yaml`.
 
 ## Architecture
 
@@ -50,16 +58,19 @@ Décision : `espérance = P(gain) × objectif − P(perte) × stop − frais`.
 | `purification.py` | Registre des montants à donner (intérêt reçu par erreur, part non conforme d'un dividende). |
 | `audit.py` | Journal JSONL de toutes les décisions, pour revue par un savant. |
 
-### Filtre des sociétés (tolérance zéro)
+### Filtre des sociétés
 
 Exclusion si l'une de ces conditions est vraie :
-- activité interdite : alcool, porc, jeux d'argent, tabac, banque/assurance
-  conventionnelles et crédit, contenu adulte, armement, drogues ;
-- **toute** dette à intérêt (y compris crédit-bail financier) ;
-- **tout** placement à intérêt, revenu d'intérêt ou charge d'intérêt ;
-- **tout** autre revenu non conforme ;
-- donnée manquante, ou comptes de plus de 400 jours ;
+- activité interdite, détectée dans le secteur, l'industrie **et** la
+  description d'activité (ex. LVMH : « Luxury Goods » mais vins et spiritueux) ;
+- un ratio financier dépasse le seuil du profil actif ;
+- donnée nécessaire inconnue (une estimation prudente — borne haute — est
+  utilisée quand une ligne détaillée manque, et signalée dans le rapport) ;
+- comptes de plus de 400 jours ;
 - instrument autre qu'une action ordinaire (actions de préférence, ETF...).
+
+Le rapport donne pour chaque société conforme son **taux de purification** :
+la part de chaque dividende à donner.
 
 Les locations simples (loyers) ne sont pas comptées comme dette par défaut :
 point à faire valider (`count_operating_leases_as_debt`).

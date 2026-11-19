@@ -20,15 +20,29 @@ CONFIG = Path(__file__).resolve().parents[1] / "config" / "compliance.yaml"
 TODAY = date(2026, 11, 19)
 
 
+def _with(base: CompliancePolicy, **changes) -> CompliancePolicy:
+    return CompliancePolicy(**{**{f: getattr(base, f) for f in base.__dataclass_fields__}, **changes})
+
+
 @pytest.fixture
-def policy() -> CompliancePolicy:
-    base = load_policy(CONFIG)
-    # Liste blanche de test uniquement : la config réelle est vide par défaut.
-    return CompliancePolicy(
-        **{
-            **{f: getattr(base, f) for f in base.__dataclass_fields__},
-            "crypto_whitelist": (CryptoApproval("BTC", approved_by="test"),),
-        }
+def aaoifi_policy() -> CompliancePolicy:
+    """La politique réellement livrée dans config/compliance.yaml."""
+    return _with(load_policy(CONFIG), crypto_whitelist=(CryptoApproval("BTC", approved_by="test"),))
+
+
+@pytest.fixture
+def policy(aaoifi_policy) -> CompliancePolicy:
+    """Profil tolérance zéro (le plus strict), avec les mêmes exclusions d'activité."""
+    zero = Decimal("0")
+    return _with(
+        aaoifi_policy,
+        profile="zero_tolerance",
+        max_interest_bearing_debt_ratio=zero,
+        max_interest_bearing_investments_ratio=zero,
+        max_interest_income_ratio=zero,
+        max_interest_expense_ratio=zero,
+        max_non_permissible_income_ratio=zero,
+        missing_non_permissible_income="exclude",
     )
 
 

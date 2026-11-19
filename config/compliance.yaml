@@ -1,12 +1,20 @@
-# Politique de conformité halal — profil TOLÉRANCE ZÉRO
+# Politique de conformité halal
 #
-# Règle absolue : le système ne travaille jamais avec l'intérêt (riba), ni dans
-# les actifs achetés, ni dans le compte, ni dans les opérations.
+# Deux niveaux distincts :
 #
-# Le chargeur refuse tout seuil > 0 tant que le profil est "zero_tolerance".
-# Toute donnée manquante ou inconnue entraîne un REFUS (principe « fail-closed »).
+# 1. NOS OPÉRATIONS — tolérance zéro, non configurable :
+#    compte « cash », pas de marge, pas de levier, pas de vente à découvert,
+#    pas de solde négatif, pas d'intérêt reçu ni payé, pas de staking.
+#    (voir order_guard.py, account_guard.py, ledger_monitor.py)
+#
+# 2. LES SOCIÉTÉS DANS LESQUELLES ON INVESTIT — profil ci-dessous :
+#    - "aaoifi" : norme AAOIFI (dette tolérée sous plafond, purification) ;
+#      les exclusions d'activité restent totales (banque, assurance, alcool...).
+#    - "zero_tolerance" : aucune dette, aucun intérêt (univers quasi vide).
+#
+# Le chargeur refuse un profil « aaoifi » plus permissif que la norme.
 
-profile: zero_tolerance
+profile: aaoifi
 
 # Seuls ces types d'instruments peuvent être achetés.
 allowed_instrument_types:
@@ -18,17 +26,23 @@ allowed_quote_currencies:
   - EUR
   - USD
 
-# Filtre financier des sociétés. Profil tolérance zéro : tout doit valoir 0.
+# Filtre financier des sociétés (norme AAOIFI). Valeur vide (~) = critère non vérifié.
 thresholds:
-  max_interest_bearing_debt_ratio: 0          # dette à intérêt / capitalisation
-  max_interest_bearing_investments_ratio: 0   # dépôts, obligations, placements à intérêt / capitalisation
-  max_interest_income_ratio: 0                # revenus d'intérêts / chiffre d'affaires
-  max_interest_expense_ratio: 0               # charges d'intérêts sur dette / chiffre d'affaires
-  max_non_permissible_income_ratio: 0         # autres revenus illicites / chiffre d'affaires
+  max_interest_bearing_debt_ratio: 0.30          # dette à intérêt / capitalisation
+  max_interest_bearing_investments_ratio: 0.30   # dépôts, obligations, placements à intérêt / capitalisation
+  max_interest_income_ratio: ~                   # inclus dans le total ci-dessous
+  max_interest_expense_ratio: ~                  # couvert par le ratio de dette
+  max_non_permissible_income_ratio: 0.05         # revenus non conformes TOTAUX (intérêts compris) / CA
 
-# Crédit-bail financier (leasing de financement) : compté comme dette à intérêt.
-# Locations simples (loyers de bureaux, magasins...) : non comptées par défaut,
-# car un loyer n'est pas un prêt. Point à faire valider par un savant.
+# Yahoo ne fournit pas les « autres revenus non conformes ».
+#   exclude          : la société est exclue (obligatoire en tolérance zéro)
+#   activity_screen  : on s'appuie sur le filtre d'activité (secteur + description),
+#                      avec un avertissement dans le rapport
+missing_non_permissible_income: activity_screen
+
+# Crédit-bail financier : compté comme dette à intérêt.
+# Locations simples (loyers) : non comptées, un loyer n'est pas un prêt.
+# (Yahoo ne distinguant pas les deux, toutes les locations sont comptées : prudent.)
 count_finance_leases_as_debt: true
 count_operating_leases_as_debt: false
 
@@ -44,9 +58,9 @@ prohibited_activities:
   porc: [pork, swine, hog, hogs, pig, pigs, bacon, ham, porc, charcuterie]
   jeux_d_argent: [casino, casinos, gambling, betting, wagering, lottery, lotteries, sportsbook, jeux d'argent, paris sportifs]
   tabac: [tobacco, cigarette, cigarettes, cigar, cigars, vaping, e-cigarette, tabac]
-  finance_conventionnelle: [bank, banks, banking, insurance, insurer, reinsurance, credit services, consumer finance, consumer lending, mortgage, mortgages, lending, lender, loan, loans, savings & loan, thrift, capital markets, mortgage finance, banque, assurance, crédit à la consommation]
+  finance_conventionnelle: [bank, banks, banking, insurance, insurer, reinsurance, credit services, consumer finance, consumer lending, mortgage, mortgages, lending, lender, savings & loan, thrift, capital markets, mortgage finance, banque, assureur, compagnie d'assurance, crédit à la consommation]
   contenu_adulte: [adult entertainment, pornography, adult content]
-  armement: [weapons, firearms, ammunition, munitions, defense, defence, armement]
+  armement: [weapons, firearms, ammunition, munitions, missiles, military, aerospace & defense, defense contractor, defense systems, defence and space, armement]
   drogues: [cannabis, marijuana]
 
 # Crypto : liste blanche EXPLICITE, vide par défaut.

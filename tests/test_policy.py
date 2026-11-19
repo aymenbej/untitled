@@ -8,13 +8,48 @@ from halal_trading.domain import InstrumentType
 from .conftest import CONFIG
 
 
-def test_config_file_loads_as_zero_tolerance():
+def test_config_file_loads_as_aaoifi():
     policy = load_policy(CONFIG)
-    assert policy.profile == "zero_tolerance"
-    assert all(v == 0 for v in policy.thresholds.values())
+    assert policy.profile == "aaoifi"
+    assert policy.max_interest_bearing_debt_ratio == Decimal("0.30")
+    assert policy.max_non_permissible_income_ratio == Decimal("0.05")
+    assert policy.max_interest_expense_ratio is None
     assert policy.allowed_instrument_types == {InstrumentType.COMMON_STOCK, InstrumentType.CRYPTO_SPOT}
     assert policy.crypto_whitelist == ()  # rien d'autorisé sans validation explicite
-    assert "alcool" in policy.prohibited_activities
+    assert {"alcool", "finance_conventionnelle"} <= set(policy.prohibited_activities)
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"max_interest_bearing_debt_ratio": Decimal("0.33")},
+        {"max_interest_bearing_investments_ratio": None},
+        {"max_non_permissible_income_ratio": Decimal("0.10")},
+        {"count_finance_leases_as_debt": False},
+    ],
+)
+def test_aaoifi_profile_cannot_be_more_permissive_than_standard(change):
+    base = dict(
+        profile="aaoifi",
+        max_interest_bearing_debt_ratio=Decimal("0.30"),
+        max_interest_bearing_investments_ratio=Decimal("0.30"),
+        max_interest_income_ratio=None,
+        max_interest_expense_ratio=None,
+        max_non_permissible_income_ratio=Decimal("0.05"),
+    )
+    CompliancePolicy(**base)  # la norme elle-même est acceptée
+    with pytest.raises(ComplianceError):
+        CompliancePolicy(**{**base, **change})
+
+
+def test_zero_tolerance_requires_exclusion_of_missing_data():
+    with pytest.raises(ComplianceError):
+        CompliancePolicy(missing_non_permissible_income="activity_screen")
+
+
+def test_unknown_profile_rejected():
+    with pytest.raises(ComplianceError):
+        CompliancePolicy(profile="laxiste")
 
 
 def test_zero_tolerance_rejects_any_positive_threshold():
