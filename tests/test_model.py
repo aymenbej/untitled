@@ -10,7 +10,7 @@ from halal_trading.model.backtest import performance, simulate
 from halal_trading.model.dataset import ModelConfig
 from halal_trading.model.features import adjusted_ohlc, compute_features
 from halal_trading.model.labels import triple_barrier
-from halal_trading.model.validation import run_walk_forward, walk_forward_folds
+from halal_trading.model.validation import evaluate, run_walk_forward, walk_forward_folds
 
 CFG = ModelConfig("stocks", horizon_days=3, tp_mult=1.0, sl_mult=1.0, fee_per_side=0.001,
                   first_test_year=2021, max_positions=2, min_expected_return=0.0)
@@ -99,7 +99,7 @@ def test_adjusted_ohlc_fixes_incoherent_candles():
 
 
 # ------------------------------------------------------------------ validation
-def synthetic_panel(n_days=1500, symbols=("A", "B", "C", "D"), seed=1):
+def synthetic_panel(n_days=1500, symbols=("A", "B", "C", "D", "E", "F"), seed=1):
     rng = np.random.default_rng(seed)
     dates = pd.bdate_range("2018-01-01", periods=n_days, tz="UTC")
     from halal_trading.model.dataset import ALL_FEATURES
@@ -130,10 +130,23 @@ def test_walk_forward_never_trains_on_test_period():
 
 
 def test_models_find_a_real_signal_and_beat_reference():
-    preds, metrics = run_walk_forward(synthetic_panel(), 2021)
+    preds, metrics, _ = run_walk_forward(synthetic_panel(), 2021)
     ic = metrics.groupby("modele")["ic"].mean()
     assert ic["lineaire"] > 0.2 and ic["gradient_boosting"] > 0.2
-    assert ic["reference"] == 0
+    scores = evaluate(preds, "pred_lineaire", horizon=20)
+    assert scores["t_stat"] > 3 and scores["r2_hors_echantillon"] > 0
+    assert scores["ecart_decile_haut_bas"] > 0
+
+
+def test_train_on_all_but_test_only_on_halal():
+    panel = synthetic_panel(symbols=("A", "B", "C", "D", "E", "F", "BANK"))
+    panel["halal"] = panel["symbol"] != "BANK"
+    for train_on_all in (False, True):
+        for f in walk_forward_folds(panel, 2021, train_on_all):
+            assert panel.iloc[f.test]["halal"].all()  # jamais d'évaluation sur un actif non halal
+            assert panel.iloc[f.train]["halal"].all() != train_on_all
+    preds, _, _ = run_walk_forward(panel, 2021, train_on_all=True)
+    assert "BANK" not in set(preds["symbol"])
 
 
 # ------------------------------------------------------------------ simulation

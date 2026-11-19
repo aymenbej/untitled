@@ -22,9 +22,15 @@ allowed_instrument_types:
   - crypto_spot    # crypto au comptant (pas de dérivés, pas de stablecoins)
 
 # Devises de cotation acceptées : monnaies fiat uniquement (pas d'USDC/USDT).
+# Le change se fait au comptant chez le broker (pas de report, pas d'intérêt).
 allowed_quote_currencies:
   - EUR
   - USD
+  - GBP
+  - CHF
+  - DKK
+  - SEK
+  - NOK
 
 # Filtre financier des sociétés (norme AAOIFI). Valeur vide (~) = critère non vérifié.
 thresholds:

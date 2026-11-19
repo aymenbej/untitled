@@ -39,6 +39,15 @@ def load_model_name(path: str | Path) -> str:
     return str(yaml.safe_load(Path(path).read_text(encoding="utf-8")).get("model", "lineaire"))
 
 
+def load_training_universe(path: str | Path) -> str:
+    """« all » : entraînement sur toutes les actions téléchargées ; « halal » : seulement les conformes.
+    Dans les deux cas, évaluation et prévisions ne portent QUE sur les actions conformes."""
+    value = str(yaml.safe_load(Path(path).read_text(encoding="utf-8")).get("training_universe", "halal"))
+    if value not in ("all", "halal"):
+        raise ValueError(f"training_universe invalide : {value}")
+    return value
+
+
 def compliant_stocks(storage_dir: str | Path) -> list[str]:
     """Actions conformes au DERNIER filtrage halal enregistré."""
     files = sorted(glob.glob(str(Path(storage_dir) / "screening" / "*.json")))
@@ -48,7 +57,11 @@ def compliant_stocks(storage_dir: str | Path) -> list[str]:
     return sorted(r["symbol"] for r in rows if r["status"] == "CONFORME")
 
 
-def build_dataset(store: ParquetStore, cfg: ModelConfig, symbols: list[str]) -> pd.DataFrame:
+def build_dataset(
+    store: ParquetStore, cfg: ModelConfig, symbols: list[str], halal: set[str] | None = None
+) -> pd.DataFrame:
+    """``halal`` : actifs conformes (colonne ``halal``) ; par défaut, tous les ``symbols``."""
+    halal = set(symbols) if halal is None else halal
     frames = []
     for symbol in symbols:
         prices = store.read_prices(cfg.asset_class, symbol)
@@ -59,6 +72,7 @@ def build_dataset(store: ParquetStore, cfg: ModelConfig, symbols: list[str]) -> 
         labels = triple_barrier(ohlc, feats["vol_20"], cfg.horizon_days, cfg.tp_mult, cfg.sl_mult)
         frame = feats.merge(labels, on="date")
         frame["symbol"] = symbol
+        frame["halal"] = symbol in halal
         frames.append(frame)
     if not frames:
         raise ValueError(f"aucune donnée de prix exploitable pour {cfg.asset_class}")

@@ -12,6 +12,12 @@
 # gagnants et sous-performaient nettement l'achat-conservation.
 model: lineaire              # plus stable d'une année à l'autre que le gradient boosting
 
+# Entraînement : "all" = toutes les actions téléchargées (plus de données pour
+# apprendre les dynamiques de marché), "halal" = actions conformes seulement.
+# Dans les deux cas, l'évaluation et les prévisions ne portent QUE sur les
+# actions halal, et le contrôle des ordres bloque tout actif non conforme.
+training_universe: all
+
 stocks:
   horizon_days: 20
   tp_mult: 3.0

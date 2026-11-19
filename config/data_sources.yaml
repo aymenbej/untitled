@@ -15,6 +15,10 @@ crypto:
 stocks:
   source: yahoo             # yfinance : non officiel, prototype uniquement
   start: 2006-01-01
+  # Univers utilisé par défaut : "discovered" (découverte automatique, voir
+  # `halal-data discover`) ou "seed" (liste ci-dessous).
+  universe: discovered
+  discovery_min_market_cap_usd: 20000000000
   # Liste de départ à filtrer. Le filtre halal décide, pas cette liste.
   # Format Yahoo : suffixe .PA (Paris), .AS (Amsterdam), .DE (Francfort)...
   seed_universe:
