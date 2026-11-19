@@ -1,0 +1,65 @@
+# Politique de conformité halal — profil TOLÉRANCE ZÉRO
+#
+# Règle absolue : le système ne travaille jamais avec l'intérêt (riba), ni dans
+# les actifs achetés, ni dans le compte, ni dans les opérations.
+#
+# Le chargeur refuse tout seuil > 0 tant que le profil est "zero_tolerance".
+# Toute donnée manquante ou inconnue entraîne un REFUS (principe « fail-closed »).
+
+profile: zero_tolerance
+
+# Seuls ces types d'instruments peuvent être achetés.
+allowed_instrument_types:
+  - common_stock   # actions ordinaires
+  - crypto_spot    # crypto au comptant (pas de dérivés, pas de stablecoins)
+
+# Devises de cotation acceptées : monnaies fiat uniquement (pas d'USDC/USDT).
+allowed_quote_currencies:
+  - EUR
+  - USD
+
+# Filtre financier des sociétés. Profil tolérance zéro : tout doit valoir 0.
+thresholds:
+  max_interest_bearing_debt_ratio: 0          # dette à intérêt / capitalisation
+  max_interest_bearing_investments_ratio: 0   # dépôts, obligations, placements à intérêt / capitalisation
+  max_interest_income_ratio: 0                # revenus d'intérêts / chiffre d'affaires
+  max_interest_expense_ratio: 0               # charges d'intérêts sur dette / chiffre d'affaires
+  max_non_permissible_income_ratio: 0         # autres revenus illicites / chiffre d'affaires
+
+# Crédit-bail financier (leasing de financement) : compté comme dette à intérêt.
+# Locations simples (loyers de bureaux, magasins...) : non comptées par défaut,
+# car un loyer n'est pas un prêt. Point à faire valider par un savant.
+count_finance_leases_as_debt: true
+count_operating_leases_as_debt: false
+
+# Fraîcheur des données
+max_financials_age_days: 400      # comptes publiés il y a plus de 400 jours -> refus
+max_screening_age_days: 100       # re-filtrage obligatoire chaque trimestre
+max_account_confirmation_age_days: 90
+
+# Activités interdites : un mot-clé trouvé dans le secteur, l'industrie, les
+# activités déclarées ou un segment de chiffre d'affaires entraîne l'exclusion.
+prohibited_activities:
+  alcool: [alcohol, alcoholic, beverages - wineries & distilleries, brewer, brewery, breweries, beer, wine, winery, wineries, spirits, distiller, distillery, distilleries, liquor, alcool, bière, vin, spiritueux]
+  porc: [pork, swine, hog, hogs, pig, pigs, bacon, ham, porc, charcuterie]
+  jeux_d_argent: [casino, casinos, gambling, betting, wagering, lottery, lotteries, sportsbook, jeux d'argent, paris sportifs]
+  tabac: [tobacco, cigarette, cigarettes, cigar, cigars, vaping, e-cigarette, tabac]
+  finance_conventionnelle: [bank, banks, banking, insurance, insurer, reinsurance, credit services, consumer finance, consumer lending, mortgage, mortgages, lending, lender, loan, loans, savings & loan, thrift, capital markets, mortgage finance, banque, assurance, crédit à la consommation]
+  contenu_adulte: [adult entertainment, pornography, adult content]
+  armement: [weapons, firearms, ammunition, munitions, defense, defence, armement]
+  drogues: [cannabis, marijuana]
+
+# Crypto : liste blanche EXPLICITE, vide par défaut.
+# Chaque actif ajouté doit être validé (par toi et idéalement un savant).
+# Exemple : - {symbol: BTC, approved_by: "nom", note: "monnaie, pas de rendement"}
+crypto_whitelist: []
+
+# Catégories de crypto toujours interdites.
+forbidden_crypto_categories:
+  - lending          # protocoles de prêt (Aave, Compound...)
+  - yield            # produits de rendement
+  - staking          # staking et jetons de staking liquide
+  - stablecoin       # réserves placées à intérêt
+  - gambling
+  - derivatives
+  - leverage

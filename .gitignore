@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Données et journaux locaux
+data/
+logs/*.jsonl
+
+# Secrets : ne jamais committer de clés API
+.env
+*.pem
+secrets/
