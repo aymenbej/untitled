@@ -13,6 +13,7 @@ dependencies = [
     "pyarrow>=15.0",
     "requests>=2.31",
     "yfinance>=0.2.50",
+    "scikit-learn>=1.4",
 ]
 
 [project.optional-dependencies]
@@ -23,6 +24,7 @@ where = ["src"]
 
 [project.scripts]
 halal-data = "halal_trading.data.cli:main"
+halal-model = "halal_trading.model.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -103,12 +103,40 @@ halal-data quality    # contrôle qualité des données stockées
   Une vérification ne complète que les champs manquants, jamais une valeur
   fournie par la source.
 
+## Modèle de prévision (`src/halal_trading/model`)
+
+```bash
+halal-model backtest stocks   # validation walk-forward + simulation, frais déduits
+halal-model predict stocks    # espérance de gain par action au dernier cours
+```
+
+- **Cible** : rendement réel du trade avec sortie à l'objectif (3σ), au stop
+  (1,5σ) ou à l'échéance (20 jours de cotation). Achat à l'ouverture du
+  lendemain de la décision, stop prioritaire si les deux sont touchés le même jour.
+- **Modèles** : référence naïve, linéaire (Ridge), gradient boosting. Le
+  linéaire est retenu (plus stable).
+- **Validation** : entraînement sur le passé, test sur l'année suivante, purge
+  des étiquettes qui chevauchent la période de test.
+
+### Résultats (actions halal, 2012 → 2026)
+
+| | Rendement annuel | Sharpe |
+|---|---|---|
+| Sorties serrées (10 j, 1σ) | 7 à 16 % | 0,5 à 1,0 |
+| Réglage retenu, choisi sur 2012-2019, testé sur 2020-2026 | +15 % à +30 % selon le mode | 0,8 à 1,4 |
+| Acheter et garder les mêmes actions, 2020-2026 | +17 % | 0,83 |
+
+Limites : univers de 23 actions choisies parmi les gagnantes d'aujourd'hui
+(biais du survivant : tous les chiffres sont gonflés), pouvoir de sélection
+faible (IC ≈ 0,02), perte maximale de 30 à 40 %. Crypto : avec seulement BTC et
+ETH, le modèle n'apporte rien.
+
 ## Feuille de route
 
 1. ~~Socle et module de conformité~~
-2. ~~Module de collecte (prix, fondamentaux, filtrage, qualité)~~ — premier téléchargement réel à lancer
-3. Features, labels « triple barrier », backtest walk-forward avec frais
-4. Modèles actions et crypto (références simples, puis LightGBM)
+2. ~~Module de collecte (prix, fondamentaux, filtrage, qualité)~~
+3. ~~Features, labels « triple barrière », backtest walk-forward avec frais~~
+4. ~~Modèles (référence, linéaire, gradient boosting)~~ — élargir l'univers pour réduire le biais du survivant
 5. Moteur de décision et de risque, paper trading (compte démo IBKR)
 6. Connecteurs réels, petit budget, dashboard interne et alertes
 

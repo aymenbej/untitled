@@ -1,0 +1,31 @@
+# Paramètres du modèle de prévision — un modèle par classe d'actifs
+#
+# Cible (« triple barrière ») : décision à la clôture du jour J, achat à
+# l'ouverture de J+1. L'étiquette vaut 1 si l'objectif de gain est touché avant
+# le stop, dans un délai de `horizon_days` jours de cotation.
+# Objectif et stop sont proportionnels à la volatilité de l'actif :
+#   objectif = tp_mult × volatilité journalière × √horizon
+#   stop     = sl_mult × volatilité journalière × √horizon
+
+# Réglage choisi sur 2012-2019 uniquement (20 jours, objectif 3σ, stop 1,5σ),
+# puis vérifié sur 2020-2026. Des sorties serrées (10 jours, 1σ) coupaient les
+# gagnants et sous-performaient nettement l'achat-conservation.
+model: lineaire              # plus stable d'une année à l'autre que le gradient boosting
+
+stocks:
+  horizon_days: 20
+  tp_mult: 3.0
+  sl_mult: 1.5
+  fee_per_side: 0.001        # 0,05 % de frais + 0,05 % de glissement (IBKR)
+  first_test_year: 2012      # validation walk-forward : test année par année à partir de là
+  max_positions: 5
+  min_expected_return: 0.002 # espérance minimale, frais déduits, pour acheter
+
+crypto:
+  horizon_days: 20
+  tp_mult: 3.0
+  sl_mult: 1.5
+  fee_per_side: 0.006        # Coinbase, petit palier : 0,6 % par ordre
+  first_test_year: 2020
+  max_positions: 2
+  min_expected_return: 0.005
