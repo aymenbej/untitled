@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cine-benchmark"
+version = "0.1.0"
+description = "Classement de films et séries à partir d'avis partagés (publications + commentaires), notés automatiquement."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "jinja2>=3.1",
+    "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+claude = ["anthropic>=2.0"]
+dev = ["pytest>=8.0", "httpx2"]
+
+[project.scripts]
+cine-import = "cine_benchmark.importer:main"
+
+[tool.setuptools.packages.find]
+include = ["cine_benchmark*"]
+
+[tool.setuptools.package-data]
+cine_benchmark = ["templates/*.html", "static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

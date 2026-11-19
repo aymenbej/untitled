@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block titre %}Importer · Cine Benchmark{% endblock %}
+{% block contenu %}
+<h1>Importer une publication</h1>
+<p class="sous-titre">Sur Facebook, sélectionne la publication et ses commentaires (dépliés), copie, puis colle ici.
+Les noms, mentions, liens et boutons (« J'aime », « Répondre »…) sont retirés automatiquement : seul le texte des avis est conservé.</p>
+
+{% if message %}<div class="message ok">{{ message }}</div>{% endif %}
+{% if erreur %}<div class="message erreur">{{ erreur }}</div>{% endif %}
+
+<form method="post" action="/importer" class="carte">
+  <label for="collage">Collage Facebook <span class="aide">publication + commentaires d'un coup</span></label>
+  <textarea id="collage" name="collage" rows="12" placeholder="Colle ici tout le texte copié depuis Facebook…"></textarea>
+
+  <details style="margin-top: .8rem;">
+    <summary>Ou saisir la publication et les commentaires séparément</summary>
+    <label for="publication">Publication</label>
+    <textarea id="publication" name="publication" rows="4"></textarea>
+    <label for="commentaires">Commentaires</label>
+    <textarea id="commentaires" name="commentaires" rows="8"></textarea>
+    <label>Format des commentaires</label>
+    <select name="format">
+      <option value="facebook" {% if valeurs.format != 'brut' %}selected{% endif %}>Copier-coller Facebook (noms à retirer)</option>
+      <option value="brut" {% if valeurs.format == 'brut' %}selected{% endif %}>Un commentaire par paragraphe, sans noms</option>
+    </select>
+  </details>
+
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 220px;">
+      <label for="titre">Titre <span class="aide">facultatif, détecté sinon</span></label>
+      <input id="titre" name="titre" value="{{ valeurs.titre or '' }}" style="width: 100%;">
+    </div>
+    <div>
+      <label for="type">Type</label>
+      <select id="type" name="type">
+        <option value="">Détecter</option>
+        {% for t in types %}<option value="{{ t }}" {% if valeurs.type == t %}selected{% endif %}>{{ t }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="moteur">Notation</label>
+      <select id="moteur" name="moteur">
+        <option value="auto">{{ 'Claude (clé détectée)' if claude else 'Lexique hors ligne' }}</option>
+        <option value="lexique">Lexique hors ligne</option>
+        {% if claude %}<option value="claude">Claude</option>{% endif %}
+      </select>
+    </div>
+  </div>
+  <p><button type="submit">Analyser et importer</button></p>
+</form>
+
+<h2>Import en lot</h2>
+<form method="post" action="/importer/fichier" enctype="multipart/form-data" class="carte">
+  <p class="aide" style="margin-top: 0;">Fichier <code>.json</code> : <code>[{"publication": "…", "commentaires": ["…"], "titre": "facultatif"}]</code><br>
+  Fichier <code>.txt</code> : collages Facebook bruts, séparés par une ligne <code>=====</code>.</p>
+  <input type="file" name="fichier" accept=".json,.txt" required>
+  <input type="hidden" name="moteur" value="auto">
+  <button type="submit">Importer le fichier</button>
+</form>
+{% endblock %}

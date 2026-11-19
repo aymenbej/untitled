@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block titre %}{{ o.titre }} · Cine Benchmark{% endblock %}
+{% block contenu %}
+{% if request.query_params.get('importe') %}
+<div class="message ok">Publication importée. Vérifie le titre détecté ci-dessous et corrige-le si besoin.</div>
+{% endif %}
+
+<p><a href="/" class="aide">← Classement</a></p>
+<h1>{{ o.titre }} {% if o.annee %}<span class="aide">({{ o.annee }})</span>{% endif %}</h1>
+<p class="sous-titre"><span class="etiquette">{{ o.type }}</span></p>
+
+<div class="grille">
+  <div class="carte">
+    <div class="aide">Score pondéré</div>
+    <div style="font-size: 2rem; margin: .2rem 0;"><span class="note {{ ligne.score|couleur if ligne else 'neutre' }}">{{ (ligne.score if ligne else None)|note }}</span></div>
+    <div class="aide">Moyenne brute {{ (ligne.moyenne if ligne else None)|note }} sur {{ ligne.nb_avis if ligne else 0 }} avis</div>
+  </div>
+  <div class="carte">
+    <div class="aide" style="margin-bottom: .4rem;">Répartition des notes</div>
+    <div class="histo">
+      {% for n in histo %}
+      <div>
+        <div class="col" style="height: {{ (100 * n / max_histo)|round }}%; background: var(--{{ 'bas' if loop.index0 < 4 else 'moyen' if loop.index0 < 7 else 'haut' }});" title="{{ n }} avis entre {{ loop.index0 }} et {{ loop.index }}"></div>
+        <small>{{ loop.index0 }}</small>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<details style="margin-top: 1rem;">
+  <summary>Corriger le titre, le type ou l'année</summary>
+  <form method="post" action="/oeuvre/{{ o.id }}/modifier" class="carte" style="margin-top: .6rem;">
+    <label>Titre <span class="aide">si ce titre existe déjà, les deux fiches sont fusionnées</span></label>
+    <input name="titre" value="{{ o.titre }}" required style="width: 100%;">
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <div><label>Type</label>
+        <select name="type">{% for t in types %}<option value="{{ t }}" {% if o.type == t %}selected{% endif %}>{{ t }}</option>{% endfor %}</select></div>
+      <div><label>Année</label><input name="annee" value="{{ o.annee or '' }}" inputmode="numeric" size="6"></div>
+    </div>
+    <p><button type="submit">Enregistrer</button></p>
+  </form>
+</details>
+
+{% for p in o.publications %}
+<h2>Publication {{ loop.revindex }}</h2>
+<div class="carte">
+  <div class="avis">
+    <span class="note {{ p.note|couleur }}">{{ p.note|note }}</span>
+    <p><strong>{{ p.texte }}</strong></p>
+  </div>
+  {% for c in p.commentaires %}
+  <div class="avis">
+    <span class="note {{ c.note|couleur }}">{{ c.note|note }}</span>
+    <p>{{ c.texte }}</p>
+  </div>
+  {% else %}
+  <div class="avis"><p class="aide">Aucun commentaire.</p></div>
+  {% endfor %}
+  <form method="post" action="/publication/{{ p.id }}/supprimer" onsubmit="return confirm('Supprimer cette publication et ses commentaires ?');"
+        style="display: flex; justify-content: space-between; align-items: center; margin-top: .6rem;">
+    <span class="aide">Notée par : {{ 'Claude' if p.moteur == 'claude' else 'lexique (hors ligne)' }} · importée le {{ p.cree_le[:10] }}</span>
+    <button class="discret" type="submit">Supprimer</button>
+  </form>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block titre %}Cine Benchmark{% endblock %}</title>
+<style>
+:root {
+  --fond: #f6f5f2; --carte: #ffffff; --texte: #1d1c1a; --doux: #6b6862; --bord: #e4e1da;
+  --accent: #b4441f; --haut: #2f8a4c; --moyen: #c58a12; --bas: #c0392b; --neutre: #9a968e;
+  --rayon: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fond: #141413; --carte: #1f1e1c; --texte: #ecebe7; --doux: #a19d95; --bord: #33312d;
+          --accent: #e07a52; --haut: #4fbf72; --moyen: #e0aa3e; --bas: #e5675a; --neutre: #77736b; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--fond); color: var(--texte); }
+a { color: inherit; }
+header { background: var(--carte); border-bottom: 1px solid var(--bord); }
+header .contenu { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: .8rem; }
+header .logo { font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+header .logo span { color: var(--accent); }
+header nav { display: flex; gap: 1rem; }
+header nav a { text-decoration: none; color: var(--doux); }
+header nav a:hover { color: var(--texte); }
+header .stats { margin-left: auto; color: var(--doux); font-size: .85rem; }
+.contenu { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+main.contenu { padding-block: 1.5rem 3rem; }
+h1 { font-size: 1.6rem; margin: 0 0 .3rem; }
+h2 { font-size: 1.15rem; margin: 2rem 0 .8rem; }
+.sous-titre { color: var(--doux); margin: 0 0 1.5rem; }
+.carte { background: var(--carte); border: 1px solid var(--bord); border-radius: var(--rayon); padding: 1rem 1.2rem; }
+.note { display: inline-flex; align-items: center; justify-content: center; min-width: 2.8rem; padding: .15rem .45rem;
+        border-radius: 6px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+.note.haut { background: var(--haut); } .note.moyen { background: var(--moyen); }
+.note.bas { background: var(--bas); } .note.neutre { background: var(--neutre); }
+.etiquette { display: inline-block; font-size: .75rem; padding: .05rem .5rem; border-radius: 99px;
+             border: 1px solid var(--bord); color: var(--doux); }
+form.filtres { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+input, select, textarea, button { font: inherit; color: inherit; }
+input, select, textarea { background: var(--carte); border: 1px solid var(--bord); border-radius: 8px; padding: .45rem .6rem; }
+textarea { width: 100%; resize: vertical; }
+button, .bouton { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: .5rem 1rem;
+                  cursor: pointer; text-decoration: none; display: inline-block; }
+button.discret { background: transparent; color: var(--doux); border: 1px solid var(--bord); }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--bord); }
+th { font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; color: var(--doux); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr:hover td { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+.rang { color: var(--doux); width: 2.5rem; }
+.titre-oeuvre { font-weight: 600; text-decoration: none; }
+.barre { display: flex; height: 8px; width: 110px; border-radius: 4px; overflow: hidden; background: var(--bord); }
+.barre span { display: block; height: 100%; }
+.barre .b-bas { background: var(--bas); } .barre .b-moyen { background: var(--moyen); } .barre .b-haut { background: var(--haut); }
+.message { padding: .7rem 1rem; border-radius: 8px; margin-bottom: 1rem; }
+.message.ok { background: color-mix(in srgb, var(--haut) 15%, transparent); }
+.message.erreur { background: color-mix(in srgb, var(--bas) 15%, transparent); }
+.vide { text-align: center; color: var(--doux); padding: 3rem 1rem; }
+.grille { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.avis { display: flex; gap: .8rem; padding: .7rem 0; border-top: 1px solid var(--bord); }
+.avis:first-child { border-top: 0; }
+.avis p { margin: 0; white-space: pre-line; }
+.avis .note { align-self: flex-start; }
+.histo { display: flex; align-items: flex-end; gap: 4px; height: 90px; }
+.histo > div { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.histo .col { width: 100%; border-radius: 3px 3px 0 0; min-height: 2px; }
+.histo small { color: var(--doux); font-size: .7rem; }
+details summary { cursor: pointer; color: var(--doux); }
+label { display: block; font-weight: 600; margin: .8rem 0 .3rem; }
+.aide { color: var(--doux); font-size: .85rem; font-weight: 400; }
+@media (max-width: 640px) {
+  .masquer-mobile { display: none; }
+  header .stats { margin-left: 0; width: 100%; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="contenu">
+    <a class="logo" href="/">Cine<span>Benchmark</span></a>
+    <nav>
+      <a href="/">Classement</a>
+      <a href="/importer">Importer</a>
+    </nav>
+    <div class="stats">{{ stats.oeuvres }} œuvres · {{ stats.avis_notes }} avis notés</div>
+  </div>
+</header>
+<main class="contenu">
+{% block contenu %}{% endblock %}
+</main>
+</body>
+</html>
