@@ -211,3 +211,11 @@ def test_aaoifi_keeps_activity_exclusions(aaoifi_policy, industry):
 def test_ambiguous_wording_no_longer_excludes(aaoifi_policy, summary):
     company = clean_company(business_activities=(summary,))
     assert screen_company(company, aaoifi_policy, today=TODAY).compliant
+
+
+def test_manual_exclusion_overrides_passing_screen(aaoifi_policy):
+    assert {"BAM", "EQT.ST"} <= set(aaoifi_policy.manual_exclusions)
+    excluded = clean_company(symbol="EQT.ST")
+    result = screen_company(excluded, aaoifi_policy, today=TODAY)
+    assert not result.compliant and any("exclusion manuelle" in r for r in result.reasons)
+    assert screen_company(clean_company(symbol="EQT"), aaoifi_policy, today=TODAY).compliant  # autre société

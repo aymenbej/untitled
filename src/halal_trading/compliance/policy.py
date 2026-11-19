@@ -74,6 +74,8 @@ class CompliancePolicy:
     max_account_confirmation_age_days: int = 90
     prohibited_activities: dict[str, tuple[str, ...]] = field(default_factory=dict)
     crypto_whitelist: tuple[CryptoApproval, ...] = ()
+    # Exclusions décidées à la main, sociétés par société : symbole -> raison
+    manual_exclusions: dict[str, str] = field(default_factory=dict)
     forbidden_crypto_categories: frozenset[str] = frozenset(
         {"lending", "yield", "staking", "stablecoin", "gambling", "derivatives", "leverage"}
     )
@@ -185,6 +187,10 @@ def load_policy(path: str | Path) -> CompliancePolicy:
             for category, keywords in (raw.get("prohibited_activities", {}) or {}).items()
         },
         crypto_whitelist=whitelist,
+        manual_exclusions={
+            str(e["symbol"]).upper(): str(e.get("reason", "")).strip() or "exclusion manuelle"
+            for e in raw.get("manual_exclusions", []) or []
+        },
         forbidden_crypto_categories=frozenset(
             c.lower() for c in raw.get("forbidden_crypto_categories", []) or []
         ),

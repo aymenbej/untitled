@@ -136,7 +136,12 @@ def screen_company(
     if profile.instrument_type != InstrumentType.COMMON_STOCK:
         reasons.append(f"type d'instrument non autorisé : {profile.instrument_type.value}")
 
-    # 2. Activité
+    # 2. Exclusion manuelle (décision humaine, toujours prioritaire)
+    manual = policy.manual_exclusions.get(profile.symbol.upper())
+    if manual:
+        reasons.append(f"exclusion manuelle : {manual}")
+
+    # 3. Activité
     if not profile.sector and not profile.industry and not profile.business_activities:
         reasons.append("activité inconnue (secteur, industrie et activités absents)")
     texts = [profile.sector or "", profile.industry or "", *profile.business_activities]
@@ -144,7 +149,7 @@ def screen_company(
     for hit in find_prohibited_activities(texts, policy):
         reasons.append(f"activité interdite : {hit}")
 
-    # 3. Finances
+    # 4. Finances
     warnings: list[str] = []
     impure_ratio = None
     fin = profile.financials

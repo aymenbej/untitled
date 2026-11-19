@@ -70,6 +70,15 @@ prohibited_activities:
   drogues: [cannabis, marijuana]
   sans_activite: [shell companies, shell company, blank check, special purpose acquisition]   # SPAC : trésorerie placée en bons du Trésor
 
+# Exclusions manuelles : sociétés qui passent les filtres automatiques mais
+# que l'on écarte par décision humaine. Le symbole doit être exact (EQT.ST est
+# le gérant suédois ; EQT seul est un producteur de gaz américain).
+manual_exclusions:
+  - symbol: BAM
+    reason: "gérant d'actifs (Brookfield) : une partie des fonds gérés prête à intérêt"
+  - symbol: EQT.ST
+    reason: "gérant d'actifs (EQT AB) : une partie des fonds gérés prête à intérêt"
+
 # Crypto : liste blanche EXPLICITE, vide par défaut.
 # Chaque actif ajouté doit être validé (par toi et idéalement un savant).
 # Exemple : - {symbol: BTC, approved_by: "nom", note: "monnaie, pas de rendement"}
