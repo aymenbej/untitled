@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 
 from halal_trading.compliance import load_policy
-from halal_trading.data.pipeline import load_data_config
+from halal_trading.data.pipeline import load_data_config, stock_universe
 from halal_trading.data.storage import ParquetStore
 
 from .backtest import buy_and_hold, decile_table, expected_return, performance, simulate
@@ -38,8 +38,10 @@ ROOT = Path(__file__).resolve().parents[3]
 def _universe(asset_class: str, storage_dir: Path, data_cfg, store: ParquetStore) -> tuple[list[str], set[str]]:
     """(actifs disponibles pour l'entraînement, actifs halal autorisés au trading)."""
     if asset_class == "stocks":
-        halal = set(compliant_stocks(storage_dir))
-        return store.list_symbols("stocks"), halal
+        universe = set(stock_universe(data_cfg, storage_dir))
+        available = [s for s in store.list_symbols("stocks") if s in universe]
+        halal = set(compliant_stocks(storage_dir)) & universe
+        return available, halal
     policy = load_policy(ROOT / "config" / "compliance.yaml")
     approved = {f"{a.symbol}-EUR" for a in policy.crypto_whitelist}
     return list(data_cfg.crypto_products), approved

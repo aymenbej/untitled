@@ -68,6 +68,7 @@ prohibited_activities:
   contenu_adulte: [adult entertainment, pornography, adult content]
   armement: [weapons, firearms, ammunition, munitions, missiles, military, aerospace & defense, defense contractor, defense systems, defence and space, armement]
   drogues: [cannabis, marijuana]
+  sans_activite: [shell companies, shell company, blank check, special purpose acquisition]   # SPAC : trésorerie placée en bons du Trésor
 
 # Crypto : liste blanche EXPLICITE, vide par défaut.
 # Chaque actif ajouté doit être validé (par toi et idéalement un savant).
