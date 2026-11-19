@@ -1,0 +1,22 @@
+# Vérifications manuelles des données financières manquantes
+#
+# Les sources gratuites ne fournissent pas toutes les lignes nécessaires au
+# filtre tolérance zéro (en particulier les « autres revenus non conformes »).
+# Une donnée manquante entraîne l'exclusion. Pour la compléter, une personne
+# vérifie le rapport annuel et l'inscrit ici, avec sa source.
+#
+# Règles appliquées par le code :
+# - une vérification ne complète QUE les champs absents des données ; elle ne
+#   remplace jamais une valeur fournie par la source ;
+# - une vérification plus ancienne que max_financials_age_days est ignorée.
+#
+# Exemple :
+# reviews:
+#   - symbol: XXXX
+#     reviewed_by: "Nom"
+#     reviewed_at: 2026-11-19
+#     source: "Rapport annuel 2025, note 12, p. 112"
+#     fields:
+#       non_permissible_income: 0
+
+reviews: []

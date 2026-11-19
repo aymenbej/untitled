@@ -71,10 +71,31 @@ dans `config/compliance.yaml` avec le nom de la personne qui l'a validée.
 Stablecoins, prêt, staking, rendement, dérivés et levier sont toujours interdits.
 Cotation en monnaie fiat uniquement (EUR, USD).
 
+## Collecte des données (`src/halal_trading/data`)
+
+Option A (gratuite, prototype) : Coinbase pour la crypto, Yahoo Finance (yfinance)
+pour les actions. Configuration dans `config/data_sources.yaml`.
+
+```bash
+halal-data crypto     # prix crypto journaliers depuis 2017 (Coinbase, sans clé)
+halal-data stocks     # prix actions ajustés, dividendes, divisions (Yahoo)
+halal-data screen     # filtre halal tolérance zéro de l'univers de départ
+halal-data quality    # contrôle qualité des données stockées
+```
+
+- Stockage local Parquet dans `data/` (non versionné), mise à jour incrémentale.
+- Chaque filtrage archive les fondamentaux bruts datés : on construit ainsi
+  notre propre historique du statut halal, trimestre après trimestre.
+- **Limite de Yahoo** : il ne fournit pas les « autres revenus non conformes »,
+  ni la distinction crédit-bail / location simple. Sans vérification manuelle
+  (`config/manual_reviews.yaml`, avec auteur et source), la société est exclue.
+  Une vérification ne complète que les champs manquants, jamais une valeur
+  fournie par la source.
+
 ## Feuille de route
 
 1. ~~Socle et module de conformité~~
-2. Collecte des données (prix, fondamentaux) et filtrage de l'univers réel
+2. ~~Module de collecte (prix, fondamentaux, filtrage, qualité)~~ — premier téléchargement réel à lancer
 3. Features, labels « triple barrier », backtest walk-forward avec frais
 4. Modèles actions et crypto (références simples, puis LightGBM)
 5. Moteur de décision et de risque, paper trading (compte démo IBKR)

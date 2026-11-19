@@ -1,0 +1,54 @@
+# Sources de données — option A (gratuite, pour le prototype)
+#
+# La collecte de données n'est PAS une autorisation de trader : seuls les actifs
+# validés par le module conformité peuvent faire l'objet d'ordres.
+
+storage_dir: data
+
+crypto:
+  source: coinbase          # API publique, sans clé
+  start: 2017-01-01
+  products:                 # paires cotées en EUR (pas de stablecoin)
+    - BTC-EUR
+    - ETH-EUR
+
+stocks:
+  source: yahoo             # yfinance : non officiel, prototype uniquement
+  start: 2006-01-01
+  # Liste de départ à filtrer. Le filtre halal décide, pas cette liste.
+  # Format Yahoo : suffixe .PA (Paris), .AS (Amsterdam), .DE (Francfort)...
+  seed_universe:
+    # États-Unis
+    - AAPL
+    - MSFT
+    - NVDA
+    - GOOGL
+    - META
+    - ADBE
+    - CRM
+    - ORCL
+    - CSCO
+    - INTU
+    - ANET
+    - FTNT
+    - CPRT
+    - FAST
+    - ODFL
+    - EXPD
+    - MNST
+    - ISRG
+    - REGN
+    - VRTX
+    - IDXX
+    - LULU
+    - DECK
+    - TSLA
+    # Europe
+    - ASML.AS
+    - SAP.DE
+    - NOVO-B.CO
+    - RMS.PA
+    - MC.PA
+    - DSY.PA
+    - OR.PA
+    - AIR.PA
